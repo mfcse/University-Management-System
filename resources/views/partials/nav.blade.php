@@ -18,13 +18,13 @@
               <a class="dropdown-item" href="{{route('department.show')}}">View All Departments</a>
             </div>
           </li>
-          {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course</a>
             <div class="dropdown-menu" aria-labelledby="dropdown07">
-              <a class="dropdown-item" href="{{route('city.add')}}">Add a City</a>
-              <a class="dropdown-item" href="{{route('city.show')}}">View All Cities</a>
+              <a class="dropdown-item" href="{{route('course.add')}}">Add a Course</a>
+              {{-- <a class="dropdown-item" href="{{route('city.show')}}">View All Cities</a> --}}
             </div>
-          </li> --}}
+          </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
           <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search" name="search">

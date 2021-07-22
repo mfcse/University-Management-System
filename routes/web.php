@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,6 @@ Route::get('/', function () {
 Route::get('/add-department', [DepartmentController::class, 'addDepartment'])->name('department.add');
 Route::post('/add-department', [DepartmentController::class, 'submitDepartment']);
 Route::get('/show-departments', [DepartmentController::class, 'showAllDepartments'])->name('department.show');
+
+Route::get('/add-course', [CourseController::class, 'addCourse'])->name('course.add');
+Route::post('/add-course', [CourseController::class, 'submitCourse']);
