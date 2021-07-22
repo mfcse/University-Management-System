@@ -12,16 +12,23 @@
           </li>
                     
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Departments</a>
             <div class="dropdown-menu" aria-labelledby="dropdown07">
               <a class="dropdown-item" href="{{route('department.add')}}">Add a Department</a>
               <a class="dropdown-item" href="{{route('department.show')}}">View All Departments</a>
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
             <div class="dropdown-menu" aria-labelledby="dropdown07">
               <a class="dropdown-item" href="{{route('course.add')}}">Add a Course</a>
+              {{-- <a class="dropdown-item" href="{{route('city.show')}}">View All Cities</a> --}}
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teachers</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown07">
+              <a class="dropdown-item" href="{{route('teacher.add')}}">Add a Teacher</a>
               {{-- <a class="dropdown-item" href="{{route('city.show')}}">View All Cities</a> --}}
             </div>
           </li>

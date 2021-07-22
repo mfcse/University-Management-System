@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::get('/show-departments', [DepartmentController::class, 'showAllDepartment
 
 Route::get('/add-course', [CourseController::class, 'addCourse'])->name('course.add');
 Route::post('/add-course', [CourseController::class, 'submitCourse']);
+
+Route::get('/add-teacher', [TeacherController::class, 'addTeacher'])->name('teacher.add');
+Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
