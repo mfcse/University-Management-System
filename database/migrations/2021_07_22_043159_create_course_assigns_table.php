@@ -17,14 +17,12 @@ class CreateCourseAssignsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('teacher_id');
-            $table->decimal('remaining_credit', 8, 1);
+            $table->decimal('remaining_credit', 8, 1)->default();
             $table->string('course_code');
-            $table->unsignedBigInteger('semester_id');
             $table->tinyInteger('assigned')->default(1);
             $table->timestamps();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('semester_id')->references('id')->on('semesters')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('course_code')->references('code')->on('courses')->onUpdate('cascade')->onDelete('cascade');
         });
     }
