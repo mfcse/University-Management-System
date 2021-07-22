@@ -36,4 +36,11 @@ class DepartmentController extends Controller
         }
         return redirect()->back();
     }
+    public function showAllDepartments()
+    {
+        $data = [];
+        $data['departments'] = Department::select('code', 'name', 'id')->orderBy('id', 'DESC')->get();
+        //dd($departments);
+        return view('department.show', $data);
+    }
 }

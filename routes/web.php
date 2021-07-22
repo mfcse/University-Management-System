@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/add-department', [DepartmentController::class, 'addDepartment'])->name('department.add');
 Route::post('/add-department', [DepartmentController::class, 'submitDepartment']);
+Route::get('/show-departments', [DepartmentController::class, 'showAllDepartments'])->name('department.show');
