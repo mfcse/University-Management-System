@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/add-department', [DepartmentController::class, 'addDepartment'])->name('department.add');
+Route::post('/add-department', [DepartmentController::class, 'submitDepartment']);
