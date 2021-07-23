@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseAssign;
 use App\Models\Department;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -13,8 +14,11 @@ class CourseAssignController extends Controller
     {
         $data = [];
         $data['departments'] = Department::select('id', 'name', 'code')->get();
-        // $teachers = Teacher::select('id', 'name', 'credit_to_be_taken')->where('department_id', 1)->get();
-        // dd($teachers);
+        // $course = Course::select('id', 'credit', 'name', 'code')->where('id', 1)->first();
+        // $teacher = Teacher::select('id', 'name', 'credit_to_be_taken')->where('id', 1)->first();
+        // $credit_to_be_taken = CourseAssign::select('remaining_credit')->where('teacher_id', 1)->first() ?? $teacher['credit_to_be_taken'];
+        // $teacher['credit_to_be_taken'] = $credit_to_be_taken;
+        //dd($teacher);
         return view('course.assign', $data);
     }
     public function getTeachers(Request $request)
@@ -29,6 +33,23 @@ class CourseAssignController extends Controller
         $courses = Course::select('id', 'name', 'code', 'credit')->where('department_id', $request->departmentId)->get();
 
         return response()->json($courses);
+    }
+
+    public function getTeacher(Request $request)
+    {
+        $teacher = Teacher::select('id', 'name', 'credit_to_be_taken')->where('id', $request->teacherId)->first();
+        //$teacher['remaining_credit']=
+        $credit_to_be_taken = CourseAssign::select('remaining_credit')->where('teacher_id', $request->teacherId)->first() ?? $teacher['credit_to_be_taken'];
+        $teacher['remaining_credit'] = $credit_to_be_taken;
+        // dd($teacher);
+        return response()->json($teacher);
+    }
+    public function getCourse(Request $request)
+    {
+        $course = Course::select('id', 'credit', 'name', 'code')->where('code', $request->courseCode)->first();
+
+        // dd($teacher);
+        return response()->json($course);
     }
 
     public function submitAssign(Request $request)

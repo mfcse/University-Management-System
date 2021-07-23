@@ -113,6 +113,49 @@
       $("#course_code").empty();
     }   
     });
+    //get value for a course
+    $('#course_code').change(function(){
+    var courseCode = $(this).val();  
+    if(courseCode){
+      $.ajax({
+        type:"GET",
+        url:"{{url('get-course-data')}}?courseCode="+courseCode,
+        success:function(res){        
+        if(res){
+            console.log(res);
+          $("#course_name").val(res['name']);
+          $("#course_credit").val(res['credit']);
+                
+        }else{
+          $("#credit_to_be_taken").val();
+          $("#remaining_credit").val();
+        }
+        }
+      });
+    } 
+    });
+
+    //get value for a teacher
+    $('#teacher_id').change(function(){
+    var teacherId = $(this).val();  
+    if(teacherId){
+      $.ajax({
+        type:"GET",
+        url:"{{url('get-teacher-data')}}?teacherId="+teacherId,
+        success:function(res){        
+        if(res){
+            console.log(res);
+          $("#credit_to_be_taken").val(res['credit_to_be_taken']);
+          $("#remaining_credit").val(res['remaining_credit']);
+                
+        }else{
+            $("#credit_to_be_taken").val();
+          $("#remaining_credit").val();
+        }
+        }
+      });
+    } 
+    });
     
   </script>
 @endsection
