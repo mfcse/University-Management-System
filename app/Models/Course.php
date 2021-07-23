@@ -16,6 +16,6 @@ class Course extends Model
     }
     public function semester()
     {
-        return $this->belongsTo(Semester::class);
+        return $this->belongsTo(Semester::class, 'semester_id', 'id');
     }
 }

@@ -13,4 +13,8 @@ class CourseAssign extends Model
     {
         return $this->belongsTo(Course::class, 'course_code', 'code');
     }
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id', 'id');
+    }
 }

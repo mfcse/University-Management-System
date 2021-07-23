@@ -59,13 +59,35 @@ class CourseController extends Controller
     {
         $data = [];
         $data['departments'] = Department::select('id', 'name', 'code')->get();
-        dd($courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code', 'credit')->where('department_id', 1)->get());
+        // $courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code', 'credit', 'semester_id')->where('department_id', 1)->get();
+        //dd($courses = Semester::with('courses')->select('id', 'name')->where('id', 1)->get());
+
+        // var_dump($courses);
+        // die;
+
+        $courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code', 'credit')->where('department_id', 1)->get();
+        // foreach ($courses as $key => $value) {
+        //     var_dump($value->course_assigned->teacher_id);
+        // }
+        // die;
+        // foreach ($courses as $key => $value) {
+        //     if (!$value->course_assigned->teacher_id || $value->course_assigned->teacher_id === '') {
+        //         $value->course_assigned->teacher->name = 'Not Assigned Yet';
+        //     }
+        // }
+        // dd($courses);
         return view('course.stats', $data);
     }
     public function getCourseInfo(Request $request)
     {
-        $courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code')->where('department_id', $request->departmentId)->get();
+        $courses = Course::with('course_assigned.teacher', 'semester')->select('id', 'name', 'code', 'credit', 'semester_id')->where('department_id', 1)->get();
 
+        //set message
+        // foreach ($courses as $key => $value) {
+        //     if ($value->course_assigned->teacher_id === null) {
+        //         $value->course_assigned->teacher->name = 'Not Assigned Yet';
+        //     }
+        // }
         return response()->json($courses);
     }
 }

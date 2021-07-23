@@ -9,4 +9,8 @@ class Teacher extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function assined()
+    {
+        return $this->hasMany(CourseAssign::class, 'teacher_id', 'id');
+    }
 }
