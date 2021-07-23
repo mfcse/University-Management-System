@@ -42,26 +42,27 @@
 
             <div class="form-group">
                 <label for="credit_to_be_taken">Credit to be taken</label>
-                <input type="text" name="credit_to_be_taken" id="credit_to_be_taken" class="form-control">
+                <input type="text" name="credit_to_be_taken" id="credit_to_be_taken" class="form-control"  readonly>
             </div>
 
             <div class="form-group">
                 <label for="remaining_credit">Remaining Credit</label>
-                <input type="text" name="remaining_credit" id="remaining_credit" class="form-control">
+                <input type="text" name="remaining_credit" id="remaining_credit" class="form-control"  readonly>
             </div>
     
             <div class="form-group">
                 <label for="course_code">Course</label>
                 <select name="course_code" id="course_code" class="form-control"></select>
+                <input type="hidden" name="course_id" id="course_id">
             </div>
              
             <div class="form-group">
                 <label for="course_name">Course Name</label>
-                <input type="text" name="course_name" id="course_name" class="form-control">
+                <input type="text" name="course_name" id="course_name" class="form-control"   readonly>
             </div>
             <div class="form-group">
                 <label for="course_credit">Course Credit</label>
-                <input type="text" name="course_credit" id="course_credit" class="form-control">
+                <input type="text" name="course_credit" id="course_credit" class="form-control"   readonly>
             </div>
             
             <button class="btn btn-success mb-5" type="submit">Assign</button>
@@ -124,6 +125,7 @@
         if(res){
            // console.log(res);
           $("#course_name").val(res['name']);
+          $("#course_id").val(res['id']);
           $("#course_credit").val(res['credit']);
                 
         }else{

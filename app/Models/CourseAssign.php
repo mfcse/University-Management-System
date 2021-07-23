@@ -11,6 +11,6 @@ class CourseAssign extends Model
     protected $guarded = [];
     public function course()
     {
-        return $this->belongsTo(Course::class, 'code', 'course_code');
+        return $this->belongsTo(Course::class, 'course_code', 'code');
     }
 }
