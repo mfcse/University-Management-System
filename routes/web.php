@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseAssignController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\TeacherController;
@@ -29,3 +30,8 @@ Route::post('/add-course', [CourseController::class, 'submitCourse']);
 
 Route::get('/add-teacher', [TeacherController::class, 'addTeacher'])->name('teacher.add');
 Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
+
+Route::get('/assign-course', [CourseAssignController::class, 'assignCourse'])->name('course.assign');
+Route::post('/assign-course', [CourseAssignController::class, 'submitAssign']);
+Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);
+Route::get('get-courses', [CourseAssignController::class, 'getCourses']);
