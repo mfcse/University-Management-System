@@ -54,4 +54,18 @@ class CourseController extends Controller
         }
         return redirect()->back();
     }
+    //view all courses
+    public function viewCourseStats()
+    {
+        $data = [];
+        $data['departments'] = Department::select('id', 'name', 'code')->get();
+        dd($courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code', 'credit')->where('department_id', 1)->get());
+        return view('course.stats', $data);
+    }
+    public function getCourseInfo(Request $request)
+    {
+        $courses = Course::with('course_assigned', 'semester')->select('id', 'name', 'code')->where('department_id', $request->departmentId)->get();
+
+        return response()->json($courses);
+    }
 }

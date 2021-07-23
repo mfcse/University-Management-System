@@ -33,9 +33,12 @@ Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
 
 Route::get('/assign-course', [CourseAssignController::class, 'assignCourse'])->name('course.assign');
 Route::post('/assign-course', [CourseAssignController::class, 'submitAssign']);
+Route::get('/view-course-stats', [CourseController::class, 'viewCourseStats'])->name('course.stats');
 
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);
 Route::get('get-courses', [CourseAssignController::class, 'getCourses']);
 Route::get('get-teacher-data', [CourseAssignController::class, 'getTeacher']);
 Route::get('get-course-data', [CourseAssignController::class, 'getCourse']);
+Route::get('get-course-stats', [CourseController::class, 'getCourseInfo']);
+//

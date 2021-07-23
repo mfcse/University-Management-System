@@ -77,7 +77,7 @@ class CourseAssignController extends Controller
         }
         //check if course credit exceeds
 
-        if ($request->course_credit + $request->remaining_credit > $request->course_credit) {
+        if ($request->credit_to_be_taken - $request->remaining_credit < 0 || $request->credit_to_be_taken - $request->remaining_credit < $request->credit) {
             $this->setErrorMessage('Teacher Credit Quota exceeds');
             return redirect()->back();
 
