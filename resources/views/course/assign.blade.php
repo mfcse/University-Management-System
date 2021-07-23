@@ -93,14 +93,14 @@
         type:"GET",
         url:"{{url('get-courses')}}?departmentId="+departmentID,
         success:function(res){ 
-            console.log(res);       
+            //console.log(res);       
         if(res){
           $("#course_code").empty();
 
           $("#course_code").append('<option  value="" selected disabled>Select</option>');
 
           $.each(res,function(key,value){
-            $("#course_code").append('<option value="'+value.id+'">'+value.code+'</option>');
+            $("#course_code").append('<option value="'+value.code+'">'+value.code+'</option>');
           });
         
         }else{
@@ -122,7 +122,7 @@
         url:"{{url('get-course-data')}}?courseCode="+courseCode,
         success:function(res){        
         if(res){
-            console.log(res);
+           // console.log(res);
           $("#course_name").val(res['name']);
           $("#course_credit").val(res['credit']);
                 
@@ -144,7 +144,7 @@
         url:"{{url('get-teacher-data')}}?teacherId="+teacherId,
         success:function(res){        
         if(res){
-            console.log(res);
+            //console.log(res);
           $("#credit_to_be_taken").val(res['credit_to_be_taken']);
           $("#remaining_credit").val(res['remaining_credit']);
                 

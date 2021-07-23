@@ -14,11 +14,11 @@ class CourseAssignController extends Controller
     {
         $data = [];
         $data['departments'] = Department::select('id', 'name', 'code')->get();
-        // $course = Course::select('id', 'credit', 'name', 'code')->where('id', 1)->first();
+        // $course = Course::select('id', 'credit', 'name', 'code')->where('code', 'CSE-221')->first();
         // $teacher = Teacher::select('id', 'name', 'credit_to_be_taken')->where('id', 1)->first();
         // $credit_to_be_taken = CourseAssign::select('remaining_credit')->where('teacher_id', 1)->first() ?? $teacher['credit_to_be_taken'];
         // $teacher['credit_to_be_taken'] = $credit_to_be_taken;
-        //dd($teacher);
+        //dd($course);
         return view('course.assign', $data);
     }
     public function getTeachers(Request $request)
