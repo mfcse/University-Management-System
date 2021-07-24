@@ -35,23 +35,23 @@
             </div>
 
             <div class="form-group">
-                <label for="student_name">Name</label>
-                <input type="text" name="student_name" id="student_name"  class="form-control" readonly>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name"  class="form-control" readonly>
             </div>
 
             <div class="form-group">
-                <label for="student_email">Email</label>
-                <input type="text" name="student_email" id="student_email"  class="form-control" readonly>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email"  class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="student_department">Department</label>
                 <input type="text" name="student_department" id="student_department"  class="form-control" readonly>
+                <input type="hidden" name="department_id" id="department_id">
             </div>
 
             <div class="form-group">
-                <label for="course_name">Course</label>
-                <select name="course_name" id="course_name" class="form-control"></select>
-                <input type="hidden" name="course_id" id="course_id">
+                <label for="course_code">Course</label>
+                <select name="course_code" id="course_code" class="form-control"></select>
             </div>
             
             <button class="btn btn-success mb-5" type="submit">Assign</button>
@@ -76,13 +76,14 @@
             console.log(res);
            // $temp;        
         if(res){
-                $("#student_name").val(res.name);
-                $("#student_email").val(res.email);
+                $("#name").val(res.name);
+                $("#email").val(res.email);
                 $("#student_department").val(res.department.name);
+                $("#department_id").val(res.department_id);
         }
         else{
-            $("#student_name").val();
-                $("#student_email").val();
+            $("#name").val();
+                $("#email").val();
                 $("#student_department").val();
         }
       }
@@ -96,16 +97,16 @@
         success:function(res){
          
         if(res){
-          $("#course_name").empty();
-          $("#course_name").append('<option  value="" selected disabled>Select</option>');
+          $("#course_code").empty();
+          $("#course_code").append('<option  value="" selected disabled>Select</option>');
           $.each(res,function(key,value){
               //console.log(value);  
  
-               $("#course_name").append('<option value="'+value.code+'">'+value.name+'</option>');
+               $("#course_code").append('<option value="'+value.code+'">'+value.name+'</option>');
           });
         
         }else{
-          $("#course_name").empty();
+          $("#course_code").empty();
         }
         }
       });
