@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('contact_number');
             $table->longText('address');
             $table->unsignedBigInteger('department_id');
-            $table->unsignedBigInteger('registration_id')->unique();
+            $table->string('registration_id')->unique();
             $table->timestamps();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
         });

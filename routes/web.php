@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseAssignController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
 Route::get('/assign-course', [CourseAssignController::class, 'assignCourse'])->name('course.assign');
 Route::post('/assign-course', [CourseAssignController::class, 'submitAssign']);
 Route::get('/view-course-stats', [CourseController::class, 'viewCourseStats'])->name('course.stats');
+
+//student
+Route::get('/register-student', [StudentController::class, 'registerStudent'])->name('student.register');
+Route::post('/register-student', [StudentController::class, 'submitStudent']);
 
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);

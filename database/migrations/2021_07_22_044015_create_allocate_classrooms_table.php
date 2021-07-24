@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +20,8 @@ class CreateAllocateClassroomsTable extends Migration
             $table->string('course_code');
             $table->string('room_code');
             $table->string('day');
-            $table->string('start_time');
-            $table->string('end_time');
+            $table->timestamp('start_time')->default(Carbon::now());;
+            $table->timestamp('end_time')->default(Carbon::now());;
             $table->tinyInteger('allocated')->default(1);
             $table->timestamps();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
