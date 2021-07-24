@@ -8,7 +8,7 @@
 
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3 py-3">
-      <h2 class="text-center">Add</h2>
+      <h2 class="text-center">Departments</h2>
     </div>
   </div>
   
@@ -27,21 +27,31 @@
         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">
+                <a href="{{ route('department.show') }}">View All Departments</a>
+            </h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 py-3">
+      <h2 class="text-center">Courses</h2>
+    </div>
+  </div>
+  <div class="row mt-5">
+    
+      <div class="card col-md-3">
+        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">
                 <a href="{{ route('course.add')}}">Add a Course</a>
             </h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
 
-      <div class="card col-md-3">
-        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">
-                <a href="{{ route('teacher.add') }}">Add a Teacher</a>
-            </h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div> 
+      
 
       <div class="card col-md-3">
         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
@@ -52,6 +62,32 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
+      
+      
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 py-3">
+      <h2 class="text-center">Teachers</h2>
+    </div>
+  </div>
+  <div class="row mt-5">
+      <div class="card col-md-3">
+        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{{ route('teacher.add') }}">Add a Teacher</a>
+            </h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div> 
+
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 py-3">
+      <h2 class="text-center">Students</h2>
+    </div>
+  </div>
+  <div class="row mt-5">
       <div class="card col-md-3">
         <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
         <div class="card-body">
@@ -63,52 +99,7 @@
       </div>
   </div>
     
-  <div class="row mt-5">
-    <div class="col-md-6 offset-md-3 py-3">
-      <h2 class="text-center">View</h2>
-    </div>
-  </div>
-  <div class="row mt-5">
-  <div class="card col-md-3">
-    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">
-            <a href="{{ route('department.show') }}">View All Departments</a>
-        </h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-  <div class="card col-md-3">
-      <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-      <div class="card-body">
-          <h5 class="card-title">
-              <a href="{{ route('course.stats')}}">View Course Stats</a>
-          </h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-
-    <div class="card col-md-3">
-      {{-- <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-      <div class="card-body">
-          <h5 class="card-title">
-              <a href="{{ route('course.add')}}">Add a Course</a>
-          </h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div> --}}
-    </div>
-
-    <div class="card col-md-3">
-      {{-- <img class="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap">
-      <div class="card-body">
-          <h5 class="card-title">
-              <a href="{{ route('teacher.add') }}">Add a Teacher</a>
-          </h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div> --}}
-    </div> 
-</div>
-    
+  
  @endsection
         
   

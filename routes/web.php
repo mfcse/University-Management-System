@@ -22,16 +22,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//add department
 Route::get('/add-department', [DepartmentController::class, 'addDepartment'])->name('department.add');
 Route::post('/add-department', [DepartmentController::class, 'submitDepartment']);
+
+//show department
 Route::get('/show-departments', [DepartmentController::class, 'showAllDepartments'])->name('department.show');
 
+//add course
 Route::get('/add-course', [CourseController::class, 'addCourse'])->name('course.add');
 Route::post('/add-course', [CourseController::class, 'submitCourse']);
 
+
+//add teacher
 Route::get('/add-teacher', [TeacherController::class, 'addTeacher'])->name('teacher.add');
 Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
 
+//assign course 
 Route::get('/assign-course', [CourseAssignController::class, 'assignCourse'])->name('course.assign');
 Route::post('/assign-course', [CourseAssignController::class, 'submitAssign']);
 Route::get('/view-course-stats', [CourseController::class, 'viewCourseStats'])->name('course.stats');
