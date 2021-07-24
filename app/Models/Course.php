@@ -18,4 +18,8 @@ class Course extends Model
     {
         return $this->belongsTo(Semester::class, 'semester_id', 'id');
     }
+    public function enroll()
+    {
+        return $this->hasOne(StudentEnrollment::class, '', 'course_code', 'code');
+    }
 }

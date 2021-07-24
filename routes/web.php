@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseAssignController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentEnrollmentController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,10 +48,16 @@ Route::get('/view-course-stats', [CourseController::class, 'viewCourseStats'])->
 Route::get('/register-student', [StudentController::class, 'registerStudent'])->name('student.register');
 Route::post('/register-student', [StudentController::class, 'submitStudent']);
 
+//Enroll in a Course
+Route::get('/enroll-student', [StudentEnrollmentController::class, 'enrollStudent'])->name('student.enroll');
+Route::post('/enroll-student', [StudentEnrollmentController::class, 'submitEnrollment']);
+
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);
 Route::get('get-courses', [CourseAssignController::class, 'getCourses']);
 Route::get('get-teacher-data', [CourseAssignController::class, 'getTeacher']);
 Route::get('get-course-data', [CourseAssignController::class, 'getCourse']);
 Route::get('get-course-stats', [CourseController::class, 'getCourseInfo']);
+Route::get('get-student-data', [StudentEnrollmentController::class, 'getStudent']);
+Route::get('get-courses-data', [StudentEnrollmentController::class, 'getCourses']);
 //

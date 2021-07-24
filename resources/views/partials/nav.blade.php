@@ -37,7 +37,7 @@
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
             <div class="dropdown-menu" aria-labelledby="dropdown07">
               <a class="dropdown-item" href="{{route('student.register')}}">Register a Student</a>
-              {{-- <a class="dropdown-item" href="{{route('city.show')}}">View All Cities</a> --}}
+              <a class="dropdown-item" href="{{route('student.enroll')}}">Enroll in a Course</a>
             </div>
           </li>
         </ul>

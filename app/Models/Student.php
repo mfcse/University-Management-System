@@ -9,4 +9,12 @@ class Student extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function enrolls()
+    {
+        return $this->hasMany(StudentEnrollment::class, 'registration_id', 'registration_id');
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
+    }
 }
