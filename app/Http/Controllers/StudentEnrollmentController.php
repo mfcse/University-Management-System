@@ -60,8 +60,6 @@ class StudentEnrollmentController extends Controller
         //dd($request->all());
         $rules = [
             'registration_id' => 'required',
-            'name' => 'required',
-            'email' => 'required',
             'department_id' => 'required',
             'course_code' => 'required',
         ];
@@ -80,8 +78,6 @@ class StudentEnrollmentController extends Controller
         try {
             StudentEnrollment::create([
                 'registration_id' => $request->registration_id,
-                'name' => $request->name,
-                'email' => $request->email,
                 'department_id' => $request->department_id,
                 'course_code' => $request->course_code,
             ]);

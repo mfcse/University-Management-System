@@ -16,8 +16,6 @@ class CreateStudentEnrollmentsTable extends Migration
         Schema::create('student_enrollments', function (Blueprint $table) {
             $table->id();
             $table->string('registration_id');
-            $table->string('name');
-            $table->string('email')->unique();
             $table->unsignedBigInteger('department_id');
             $table->string('course_code');
             $table->tinyInteger('enrolled')->default(1);

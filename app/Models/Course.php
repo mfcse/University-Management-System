@@ -18,8 +18,8 @@ class Course extends Model
     {
         return $this->belongsTo(Semester::class, 'semester_id', 'id');
     }
-    public function enroll()
+    public function enrolls()
     {
-        return $this->hasOne(StudentEnrollment::class, '', 'course_code', 'code');
+        return $this->hasMany(StudentEnrollment::class, 'course_code', 'code');
     }
 }

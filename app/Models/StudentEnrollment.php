@@ -20,6 +20,10 @@ class StudentEnrollment extends Model
     }
     public function course()
     {
-        return $this->belongsTo(Course::class, '', 'course_code', 'code');
+        return $this->belongsTo(Course::class, 'course_code', 'code');
+    }
+    public function result()
+    {
+        return $this->belongsTo(Result::class, 'student_enrollment_id', 'id');
     }
 }

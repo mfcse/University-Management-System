@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseAssignController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentEnrollmentController;
 use App\Http\Controllers\TeacherController;
@@ -52,6 +53,10 @@ Route::post('/register-student', [StudentController::class, 'submitStudent']);
 Route::get('/enroll-student', [StudentEnrollmentController::class, 'enrollStudent'])->name('student.enroll');
 Route::post('/enroll-student', [StudentEnrollmentController::class, 'submitEnrollment']);
 
+//result
+Route::get('/add-result', [ResultController::class, 'addResult'])->name('result.add');
+Route::post('/add-result', [ResultController::class, 'submitResult']);
+
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);
 Route::get('get-courses', [CourseAssignController::class, 'getCourses']);
@@ -60,4 +65,5 @@ Route::get('get-course-data', [CourseAssignController::class, 'getCourse']);
 Route::get('get-course-stats', [CourseController::class, 'getCourseInfo']);
 Route::get('get-student-data', [StudentEnrollmentController::class, 'getStudent']);
 Route::get('get-courses-data', [StudentEnrollmentController::class, 'getCourses']);
+Route::get('get-enrolled-courses-data', [ResultController::class, 'getCourses']);
 //
