@@ -20,6 +20,9 @@ class ResultController extends Controller
         $data['students'] = Student::select('registration_id')->get();
         $data['grades'] = Grade::select('id', 'letter_grade', 'gpa')->get();
 
+        // $courses = StudentEnrollment::with('course', 'result')->select('id', 'registration_id', 'department_id', 'course_code', 'enrolled')->where('registration_id', 'demo-GOGcN')->where('department_id', 1)->where('enrolled', 1)->get();
+        // dd($courses);
+
 
         // $courses = StudentEnrollment::with('course')->select('id', 'department_id', 'course_code', 'enrolled')->where('department_id', 1)->where('enrolled', 1)->get();
         // dd($courses);
@@ -47,7 +50,7 @@ class ResultController extends Controller
 
     public function getCourses(Request $request)
     {
-        $courses = StudentEnrollment::with('course')->select('id', 'department_id', 'course_code', 'enrolled')->where('department_id', $request->deptID)->where('enrolled', 1)->get();
+        $courses = StudentEnrollment::with('course', 'result.grade')->select('id', 'registration_id', 'department_id', 'course_code', 'enrolled')->where('registration_id', $request->registrationId)->where('department_id', $request->deptID)->where('enrolled', 1)->get();
 
         return response()->json($courses);
     }
@@ -85,5 +88,37 @@ class ResultController extends Controller
             $this->setErrorMessage($e->getMessage());
         }
         return redirect()->back();
+    }
+
+    //show result
+    public function showResult()
+    {
+        $data = [];
+        $data['students'] = Student::select('registration_id')->get();
+        $data['grades'] = Grade::select('id', 'letter_grade', 'gpa')->get();
+
+
+        // $courses = StudentEnrollment::with('course')->select('id', 'department_id', 'course_code', 'enrolled')->where('department_id', 1)->where('enrolled', 1)->get();
+        // dd($courses);
+
+        // $data['student'] = Student::select('id', 'name', 'email', 'department_id')->where('registration_id', '2021-CSE-001')->first();
+
+        // $data['courses'] = Course::select('id', 'name', 'code', 'credit')->where('department_id', $data['student']['department_id'])->get();
+
+        // dd($data);
+
+        // $student = Student::select('id', 'name', 'email', 'department_id')->where('registration_id', '2021-CSE-001')->first();
+
+
+        // dd($student['department_id']);
+
+        // $data['students'] = Student::with('department')->select('id', 'name', 'email', 'department_id')->whereHas('courses', function ($q) {
+        //     $q->where('department_id', 1);
+        // })->get();
+        //dd($data['students']);
+        // $student = Student::with('department')->select('id', 'name', 'email', 'department_id')->where('registration_id', '2021-CSE-001')->first();
+
+        // dd($student);
+        return view('result.show', $data);
     }
 }

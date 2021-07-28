@@ -60,6 +60,7 @@
         success:function(res){        
         if(res){
             console.log(res);
+            $("#courseTable tbody").empty();
         //   $("#teacher_id").empty();
         //   $("#teacher_id").append('<option  value="" selected disabled>Select</option>');
           $.each(res,function(key,value){

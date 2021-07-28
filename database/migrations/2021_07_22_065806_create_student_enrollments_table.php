@@ -20,6 +20,7 @@ class CreateStudentEnrollmentsTable extends Migration
             $table->string('course_code');
             $table->tinyInteger('enrolled')->default(1);
             $table->timestamps();
+            //$table->unique(['registration_id', 'course_code']);
             $table->foreign('registration_id')->references('registration_id')->on('students')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('course_code')->references('code')->on('courses')->onUpdate('cascade')->onDelete('cascade');

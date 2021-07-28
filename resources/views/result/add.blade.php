@@ -103,9 +103,9 @@
     $.ajax({
         type:"GET",
         async: false,
-        url:"{{url('get-enrolled-courses-data')}}?deptID="+deptID,
+        url:"{{url('get-enrolled-courses-data')}}?deptID="+deptID+"&registrationId="+registrationId,
         success:function(res){
-            //console.log(res);
+            console.log(res);
         if(res){
           $("#student_enrollment_id").empty();
           $("#student_enrollment_id").append('<option  value="" selected disabled>Select</option>');

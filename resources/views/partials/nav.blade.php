@@ -39,6 +39,7 @@
               <a class="dropdown-item" href="{{route('student.register')}}">Register a Student</a>
               <a class="dropdown-item" href="{{route('student.enroll')}}">Enroll in a Course</a>
               <a class="dropdown-item" href="{{route('result.add')}}">Save Result</a>
+              <a class="dropdown-item" href="{{route('result.show')}}">View Result</a>
             </div>
           </li>
         </ul>

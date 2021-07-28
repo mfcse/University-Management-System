@@ -24,6 +24,6 @@ class StudentEnrollment extends Model
     }
     public function result()
     {
-        return $this->belongsTo(Result::class, 'student_enrollment_id', 'id');
+        return $this->hasOne(Result::class, 'student_enrollment_id', 'id');
     }
 }

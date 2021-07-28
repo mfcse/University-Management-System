@@ -56,6 +56,7 @@ Route::post('/enroll-student', [StudentEnrollmentController::class, 'submitEnrol
 //result
 Route::get('/add-result', [ResultController::class, 'addResult'])->name('result.add');
 Route::post('/add-result', [ResultController::class, 'submitResult']);
+Route::get('/show-result', [ResultController::class, 'showResult'])->name('result.show');
 
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);

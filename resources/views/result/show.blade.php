@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <div class="row">
-    <div class="col-md-6 offset-md-3 mt-5">
-        <h1 class="text-center mb-5">Enroll in a Course</h1>
+    <div class="col-md-8 offset-md-2 mt-5">
+        <h1 class="text-center mb-5">View Result</h1>
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -49,13 +49,19 @@
                 <input type="hidden" name="department_id" id="department_id">
             </div>
 
-            <div class="form-group">
-                <label for="course_code">Course</label>
-                <select name="course_code" id="course_code" class="form-control"></select>
-            </div>
-            
-            <button class="btn btn-success mb-5" type="submit">Enroll</button>
+            <button class="btn btn-success mb-5" type="submit">Save</button>
         </form>
+        <table class="table table-bordered table-hover mb-5" id="resultTable">
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 
@@ -73,7 +79,7 @@
         success:function(res){
             deptID=res.department_id;
             // console.log(deptID);
-            console.log(res);
+            // console.log(res);
            // $temp;        
         if(res){
                 $("#name").val(res.name);
@@ -93,20 +99,21 @@
     $.ajax({
         type:"GET",
         async: false,
-        url:"{{url('get-courses-data')}}?deptID="+deptID,
+        url:"{{url('get-enrolled-courses-data')}}?deptID="+deptID+"&registrationId="+registrationId,
         success:function(res){
-         
+            console.log(res);
         if(res){
-          $("#course_code").empty();
-          $("#course_code").append('<option  value="" selected disabled>Select</option>');
+            $("#resultTable tbody").empty();
+          
           $.each(res,function(key,value){
               //console.log(value);  
- 
-               $("#course_code").append('<option value="'+value.code+'">'+value.name+'</option>');
+              let grade=(!value.result) ? "Not Graded Yet" : value.result.grade.letter_grade;
+
+               $("#resultTable tbody").append('<tr><td>'+value.course_code+'</td><td>'+value.course.name+'</td><td>'+grade+'</td></tr>');
           });
         
         }else{
-          $("#course_code").empty();
+          $("#resultTable tbody").empty();
         }
         }
       });

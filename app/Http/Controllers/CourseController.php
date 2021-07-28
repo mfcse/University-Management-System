@@ -68,7 +68,7 @@ class CourseController extends Controller
     }
     public function getCourseInfo(Request $request)
     {
-        $courses = Course::with('course_assigned.teacher', 'semester')->select('id', 'name', 'code', 'credit', 'semester_id')->where('department_id', 1)->get();
+        $courses = Course::with('course_assigned.teacher', 'semester')->select('id', 'name', 'code', 'credit', 'semester_id')->where('department_id', $request->departmentId)->get();
 
         //set message
         // foreach ($courses as $key => $value) {
