@@ -20,8 +20,8 @@ class CreateAllocateClassroomsTable extends Migration
             $table->string('course_code');
             $table->string('room_code');
             $table->string('day');
-            $table->timestamp('start_time')->default(Carbon::now());;
-            $table->timestamp('end_time')->default(Carbon::now());;
+            $table->time('start_time')->default(Carbon::now());
+            $table->time('end_time')->default(Carbon::now());;
             $table->tinyInteger('allocated')->default(1);
             $table->timestamps();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');

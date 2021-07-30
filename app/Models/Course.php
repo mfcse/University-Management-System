@@ -22,4 +22,8 @@ class Course extends Model
     {
         return $this->hasMany(StudentEnrollment::class, 'course_code', 'code');
     }
+    public function allocate()
+    {
+        return $this->hasMany(AllocateClassroom::class, 'course_code', 'code');
+    }
 }

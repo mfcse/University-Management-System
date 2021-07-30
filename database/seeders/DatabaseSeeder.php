@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentsSeeder::class,
             GradesSeeder::class,
-            // CoursesSeeder::class,
+            ClassroomSeeder::class,
         ]);
         Semester::factory(8)->create();
 

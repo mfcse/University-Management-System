@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllocateClassroomController;
 use App\Http\Controllers\CourseAssignController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
@@ -58,6 +59,11 @@ Route::get('/add-result', [ResultController::class, 'addResult'])->name('result.
 Route::post('/add-result', [ResultController::class, 'submitResult']);
 Route::get('/show-result', [ResultController::class, 'showResult'])->name('result.show');
 
+//allocate classrooms
+Route::get('/allocate-classroom', [AllocateClassroomController::class, 'allocateClassroom'])->name('classroom.allocate');
+Route::post('/allocate-classroom', [AllocateClassroomController::class, 'submitAllocation']);
+Route::get('/view-allocations', [AllocateClassroomController::class, 'viewAllocations'])->name('allocation.show');
+
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);
 Route::get('get-courses', [CourseAssignController::class, 'getCourses']);
@@ -67,4 +73,8 @@ Route::get('get-course-stats', [CourseController::class, 'getCourseInfo']);
 Route::get('get-student-data', [StudentEnrollmentController::class, 'getStudent']);
 Route::get('get-courses-data', [StudentEnrollmentController::class, 'getCourses']);
 Route::get('get-enrolled-courses-data', [ResultController::class, 'getCourses']);
+Route::get('get-assigned-courses', [AllocateClassroomController::class, 'getCourses']);
+Route::get('get-allocation-stats', [AllocateClassroomController::class, 'viewAllocationStats']);
+
+
 //
