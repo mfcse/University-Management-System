@@ -49,7 +49,7 @@
                 <input type="hidden" name="department_id" id="department_id">
             </div>
 
-            <button class="btn btn-success mb-5" type="submit">Save</button>
+            {{-- <button class="btn btn-success mb-5" type="submit">Make Pdf</button> --}}
         </form>
         <table class="table table-bordered table-hover mb-5" id="resultTable">
             <thead>
