@@ -16,7 +16,7 @@
   </head>
   <body>
     @include('partials.nav')
-      <div class="container">
+      <div class="container main-content" style="min-height: 90vh">
        
         @yield('content')
       </div>
