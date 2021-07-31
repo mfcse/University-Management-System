@@ -136,7 +136,7 @@ class AllocateClassroomController extends Controller
     }
     public function viewAllocationStats(Request $request)
     {
-        $allocations = AllocateClassroom::with('course')->select('id', 'day', 'start_time', 'end_time', 'course_code', 'room_code', 'department_id')->where('department_id', $request->departmentId)->orderBy('course_code', 'asc')->get();
+        $allocations = AllocateClassroom::with('course')->select('id', 'day', 'start_time', 'end_time', 'course_code', 'room_code', 'department_id')->where('department_id', $request->departmentId)->where('allocated', 1)->orderBy('course_code', 'asc')->get();
         ///to do //combine same in a row
 
         # display time in 12 hour format

@@ -78,7 +78,7 @@ class CourseAssignController extends Controller
         //check if assign==0 & already exhists
         $course_code = $request->course_code;
         $old_course = CourseAssign::select('assigned', 'course_code')->where('course_code', $course_code)->first();
-        dd($old_course);
+        //dd($old_course);
 
         //check if course credit exceeds
 
@@ -105,6 +105,8 @@ class CourseAssignController extends Controller
                         'course_code' => $request->course_code,
                         'assigned' => 1
                     ]);
+                    $this->setSuccessMessage('Course Assigned Successfully');
+                    return redirect()->back();
                 }
             } else {
                 //new course
