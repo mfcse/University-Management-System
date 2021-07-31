@@ -64,7 +64,7 @@
         //   $("#teacher_id").empty();
         //   $("#teacher_id").append('<option  value="" selected disabled>Select</option>');
           $.each(res,function(key,value){
-              let teacher=(!value.course_assigned) ? "Not Assigned Yet" : value.course_assigned.teacher.name;
+              let teacher=(!value.course_assigned || value.course_assigned.assigned =='0') ? "Not Assigned Yet" : value.course_assigned.teacher.name;
               //console.log(teacher);
             $("#courseTable tbody").append('<tr><td>'+value.code+'</td><td>'+value.name+'</td><td>'+value.semester.name+'</td><td>'+teacher+'</td></tr>');
           });

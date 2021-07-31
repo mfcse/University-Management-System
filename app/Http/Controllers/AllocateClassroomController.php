@@ -153,4 +153,13 @@ class AllocateClassroomController extends Controller
         // }
         return response()->json($allocations);
     }
+    public function unallocateClassrooms()
+    {
+        $course = AllocateClassroom::where('allocated', 1)->update([
+            'allocated' => 0
+        ]);
+
+        $this->setSuccessMessage('All Classrooms Unallocated Successfully');
+        return view('classroom.unallocate');
+    }
 }

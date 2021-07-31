@@ -50,6 +50,14 @@
               
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clear Data</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown07">
+              <a class="dropdown-item" href="{{route('course.unassign')}}">Unassign all Courses</a>
+              <a class="dropdown-item" href="{{route('classroom.unallocate')}}">Unallocate all Classrooms</a>
+              
+            </div>
+          </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
           <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search" name="search">

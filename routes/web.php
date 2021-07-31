@@ -45,6 +45,7 @@ Route::post('/add-teacher', [TeacherController::class, 'submitTeacher']);
 Route::get('/assign-course', [CourseAssignController::class, 'assignCourse'])->name('course.assign');
 Route::post('/assign-course', [CourseAssignController::class, 'submitAssign']);
 Route::get('/view-course-stats', [CourseController::class, 'viewCourseStats'])->name('course.stats');
+Route::get('/unassign-courses', [CourseAssignController::class, 'unassignCourses'])->name('course.unassign');
 
 //student
 Route::get('/register-student', [StudentController::class, 'registerStudent'])->name('student.register');
@@ -63,6 +64,7 @@ Route::get('/show-result', [ResultController::class, 'showResult'])->name('resul
 Route::get('/allocate-classroom', [AllocateClassroomController::class, 'allocateClassroom'])->name('classroom.allocate');
 Route::post('/allocate-classroom', [AllocateClassroomController::class, 'submitAllocation']);
 Route::get('/view-allocations', [AllocateClassroomController::class, 'viewAllocations'])->name('allocation.show');
+Route::get('/unallocate-classroom', [AllocateClassroomController::class, 'unallocateClassrooms'])->name('classroom.unallocate');
 
 //ajax requests
 Route::get('get-teachers', [CourseAssignController::class, 'getTeachers']);

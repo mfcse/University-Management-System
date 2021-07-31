@@ -112,4 +112,15 @@ class CourseAssignController extends Controller
         }
         return redirect()->back();
     }
+    public function unassignCourses()
+    {
+        //dd(CourseAssign::where('assigned', 1)->get());
+        $course = CourseAssign::where('assigned', 1)->update([
+            'assigned' => 0
+        ]);
+        $this->setSuccessMessage('All Courses Unassigned Successfully');
+        return view('course.unassign');
+
+        //return 'All Courses Unassigned Successfully';
+    }
 }
