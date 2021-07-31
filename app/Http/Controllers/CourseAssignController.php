@@ -17,13 +17,8 @@ class CourseAssignController extends Controller
         $data = [];
         $data['departments'] = Department::select('id', 'name', 'code')->get();
 
-        // $dbvalue = CourseAssign::select('remaining_credit')->where('teacher_id', 1)->first();
-        // dd($dbvalue->remaining_credit);
-        // $course = Course::select('id', 'credit', 'name', 'code')->where('code', 'CSE-221')->first();
-        // $teacher = Teacher::select('id', 'name', 'credit_to_be_taken')->where('id', 1)->first();
-        // $credit_to_be_taken = CourseAssign::select('remaining_credit')->where('teacher_id', 1)->first() ?? $teacher['credit_to_be_taken'];
-        // $teacher['credit_to_be_taken'] = $credit_to_be_taken;
-        //dd($course);
+
+
         return view('course.assign', $data);
     }
     public function getTeachers(Request $request)
@@ -42,10 +37,14 @@ class CourseAssignController extends Controller
 
     public function getTeacher(Request $request)
     {
+        ##there is a bug in getting remaining credit
+
         $teacher = Teacher::select('id', 'name', 'credit_to_be_taken')->where('id', $request->teacherId)->first();
         //$teacher['remaining_credit']=
-        $dbvalue = CourseAssign::select('remaining_credit')->where('teacher_id', $request->teacherId)->first();
-        $credit_to_be_taken = $dbvalue->remaining_credit ?? $teacher['credit_to_be_taken'];
+        $dbvalue = CourseAssign::select('remaining_credit')->where('teacher_id', $request->teacherId)->orderBy('remaining_credit', 'ASC')->get();
+
+        //get the smallest one
+        $credit_to_be_taken = $dbvalue[0]->remaining_credit ?? $teacher['credit_to_be_taken'];
         $teacher['remaining_credit'] = $credit_to_be_taken;
         // dd($teacher);
         return response()->json($teacher);
@@ -94,13 +93,16 @@ class CourseAssignController extends Controller
             //update old course
             if ($old_course) {
                 if ($old_course->assigned === 1) {
-                    $this->setErrorMessage('Course has already assigned');
+                    $this->setErrorMessage('Course has already been assigned');
                     return redirect()->back();
                 } else {
-                    CourseAssign::where('assigned', 0)->where('course_code', $request->course_code)->update([
+                    $course = CourseAssign::with('teacher')->where('assigned', 0)->where('course_code', $request->course_code)->first();
+                    //dd($course);
+
+                    $course->update([
                         'department_id' => $request->department_id,
                         'teacher_id' => $request->teacher_id,
-                        'remaining_credit' => $request->remaining_credit - $request->course_credit,
+                        'remaining_credit' => $course->teacher->credit_to_be_taken,
                         //'course_id' => $request->course_id,
                         'course_code' => $request->course_code,
                         'assigned' => 1
@@ -134,6 +136,15 @@ class CourseAssignController extends Controller
             'assigned' => 0,
             // 'remaining_credit'=>
         ]);
+        //query
+        $teachers = Teacher::select('id', 'credit_to_be_taken')->get();
+
+        foreach ($teachers as $key => $teacher) {
+            CourseAssign::where('teacher_id', $teacher->id)->update([
+                'remaining_credit' => $teacher->credit_to_be_taken
+            ]);
+        }
+
         $this->setSuccessMessage('All Courses Unassigned Successfully');
         return view('course.unassign');
 

@@ -74,6 +74,8 @@
     $('#department_id').change(function(){
     var departmentID = $(this).val();  
     if(departmentID){
+
+      //1st
       $.ajax({
         type:"GET",
         url:"{{url('get-teachers')}}?departmentId="+departmentID,
@@ -90,6 +92,8 @@
         }
         }
       });
+
+      //2nd
       $.ajax({
         type:"GET",
         url:"{{url('get-courses')}}?departmentId="+departmentID,
@@ -123,7 +127,9 @@
         url:"{{url('get-course-data')}}?courseCode="+courseCode,
         success:function(res){        
         if(res){
-           // console.log(res);
+            //console.log(res);
+            //console.log(typeof(res.course_assigned.assigned));
+        
           $("#course_name").val(res['name']);
           $("#course_id").val(res['id']);
           $("#course_credit").val(res['credit']);
