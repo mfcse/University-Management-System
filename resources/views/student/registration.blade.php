@@ -46,7 +46,7 @@
                 <select name="department_id" id="department_id"  class="form-control">
                     @foreach ($departments as $department)
                     <option value="{{$department->id}}">{{$department->name}}</option>
-                    <input type="hidden" name="code" value="{{$department->code}}">
+                    {{-- <input type="hidden" name="code" value="{{$department->code}}"> --}}
                     @endforeach
                 </select>
             </div>

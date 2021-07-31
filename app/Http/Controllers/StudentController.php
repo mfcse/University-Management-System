@@ -40,7 +40,9 @@ class StudentController extends Controller
         //get year
         $year = (string) Carbon::now()->year;
         //get dept code
-        $code = $request->code;
+        $code = Department::select('code')->where('id', $request->department_id)->first()->code;
+
+        //dd($code);
         //last part
         $registration = Student::select('registration_id')->latest()->first();
         //dd($registration);
