@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="row">
-    <div class="col-md-8 offset-md-2 mt-5">
+    <div class="col-md-6 offset-md-3 mt-5">
         <h1 class="text-center mb-5">View Result</h1>
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -51,6 +51,8 @@
 
             {{-- <button class="btn btn-success mb-5" type="submit">Make Pdf</button> --}}
         </form>
+    </div>
+    <div class="col-md-12">
         <table class="table table-bordered table-hover mb-5" id="resultTable">
             <thead>
                 <tr>
